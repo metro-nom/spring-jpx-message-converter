@@ -3,6 +3,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    id 'maven'
 }
 
 repositories {
@@ -10,6 +11,9 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+group = "com.metronom"
+version = "1.0.0-SNAPSHOT"
 
 def springVersion = "5.1.4.RELEASE"
 
@@ -23,3 +27,4 @@ dependencies {
     testImplementation "org.mockito:mockito-all:1.10.19"
 }
 
+jar.dependsOn(test)
