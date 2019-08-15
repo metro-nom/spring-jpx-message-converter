@@ -1,4 +1,4 @@
-package com.metronom.gpxMessageConverter;
+package com.metronom.jpxMessageConverter;
 
 import io.jenetics.jpx.GPX;
 import org.junit.Before;
@@ -11,7 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
-import static com.metronom.gpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
+import static com.metronom.jpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

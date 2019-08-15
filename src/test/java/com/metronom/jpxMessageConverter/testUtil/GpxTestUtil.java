@@ -1,4 +1,4 @@
-package com.metronom.gpxMessageConverter.testUtil;
+package com.metronom.jpxMessageConverter.testUtil;
 
 import io.jenetics.jpx.GPX;
 

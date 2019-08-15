@@ -1,4 +1,4 @@
-package com.metronom.gpxMessageConverter;
+package com.metronom.jpxMessageConverter;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import io.jenetics.jpx.GPX;
@@ -13,7 +13,7 @@ import java.util.Collections;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
-import static com.metronom.gpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
+import static com.metronom.jpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
 import static org.junit.Assert.assertEquals;
 
 public class GpxMessageConverterIntegrationTest {

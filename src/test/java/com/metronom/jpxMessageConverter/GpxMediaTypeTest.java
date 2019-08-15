@@ -1,4 +1,4 @@
-package com.metronom.gpxMessageConverter;
+package com.metronom.jpxMessageConverter;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package com.metronom.gpxMessageConverter;
+package com.metronom.jpxMessageConverter;
 
 import io.jenetics.jpx.GPX;
 import org.springframework.http.HttpInputMessage;
