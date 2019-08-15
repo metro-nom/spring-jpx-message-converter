@@ -9,12 +9,11 @@ import org.springframework.http.RequestEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Collections;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+import static com.metronom.gpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
 import static org.junit.Assert.assertEquals;
 
 public class GpxMessageConverterIntegrationTest {
@@ -36,7 +35,7 @@ public class GpxMessageConverterIntegrationTest {
         restTemplate.setMessageConverters(Collections.singletonList(new GpxMessageConverter()));
 
         URI url = URI.create(gpxServer.url(receiverPath));
-        GPX gpx = buildSampleGpx();
+        GPX gpx = sampleGpx();
         RequestEntity<GPX> entity = new RequestEntity<>(gpx, HttpMethod.POST, url);
         restTemplate.exchange(entity, String.class);
 
@@ -49,7 +48,7 @@ public class GpxMessageConverterIntegrationTest {
     public void restTemplateShouldReceiveGPX() {
         String senderPath = "/gpxSender";
 
-        GPX expected = buildSampleGpx();
+        GPX expected = sampleGpx();
         stubFor(
                 get(senderPath)
                         .willReturn(aResponse()
@@ -68,17 +67,5 @@ public class GpxMessageConverterIntegrationTest {
         GPX actual = restTemplate.exchange(entity, GPX.class).getBody();
 
         assertEquals(expected, actual);
-    }
-
-    private GPX buildSampleGpx() {
-        long firstTimestamp = LocalDateTime.of(2019, 8, 15, 10, 50, 0).toEpochSecond(ZoneOffset.UTC) * 1000;
-        long secondTimestamp = firstTimestamp + 1000;
-
-        return GPX.builder()
-                .addTrack(track -> track.addSegment(
-                        segment -> segment
-                                .addPoint(point -> point.lat(49.0).lon(8.0).time(firstTimestamp))
-                                .addPoint(point -> point.lat(49.5).lon(8.5).time(secondTimestamp))
-                )).build();
     }
 }

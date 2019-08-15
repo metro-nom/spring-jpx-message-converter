@@ -4,8 +4,6 @@
 package com.metronom.gpxMessageConverter;
 
 import io.jenetics.jpx.GPX;
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpInputMessage;
@@ -14,10 +12,10 @@ import org.springframework.http.MediaType;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Map;
 
+import static com.metronom.gpxMessageConverter.testUtil.GpxTestUtil.sampleGpx;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class GpxMessageConverterTest {
@@ -31,7 +29,7 @@ public class GpxMessageConverterTest {
 
     @Test
     public void shouldWriteGpx() throws Exception {
-        GPX input = buildSampleGpx();
+        GPX input = sampleGpx();
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         HttpOutputMessage outputMessage = mock(HttpOutputMessage.class);
@@ -47,7 +45,7 @@ public class GpxMessageConverterTest {
 
     @Test
     public void shouldReadGpx() throws Exception {
-        GPX expected = buildSampleGpx();
+        GPX expected = sampleGpx();
         String gpxString = GPX.writer().toString(expected);
 
         ByteArrayInputStream inputStream = new ByteArrayInputStream(gpxString.getBytes());
@@ -84,17 +82,5 @@ public class GpxMessageConverterTest {
         assertFalse(converter.canWrite(Map.class, null));
         assertFalse(converter.canWrite(Map.class, MediaType.APPLICATION_XML));
         assertFalse(converter.canWrite(Map.class, MediaType.valueOf("application/gpx+xml")));
-    }
-
-    private GPX buildSampleGpx() {
-        long firstTimestamp = LocalDateTime.of(2019, 8, 15, 10, 50, 0).toEpochSecond(ZoneOffset.UTC) * 1000;
-        long secondTimestamp = firstTimestamp + 1000;
-
-        return GPX.builder()
-                .addTrack(track -> track.addSegment(
-                        segment -> segment
-                                .addPoint(point -> point.lat(49.0).lon(8.0).time(firstTimestamp))
-                                .addPoint(point -> point.lat(49.5).lon(8.5).time(secondTimestamp))
-                )).build();
     }
 }
