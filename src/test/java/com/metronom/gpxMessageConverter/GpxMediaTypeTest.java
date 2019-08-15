@@ -12,9 +12,8 @@ public class GpxMediaTypeTest {
     public void shouldReturnAllMediaTypesForGpx() {
         List<MediaType> mediaTypes = GpxMediaType.mediaTypes();
 
-        assertEquals(3, mediaTypes.size());
+        assertEquals(2, mediaTypes.size());
 
-        assertTrue(mediaTypes.contains(null));
         assertTrue(mediaTypes.contains(MediaType.APPLICATION_XML));
         assertTrue(mediaTypes.contains(MediaType.valueOf("application/gpx+xml")));
     }

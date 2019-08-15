@@ -40,6 +40,6 @@ public class GpxMessageConverter implements HttpMessageConverter<GPX> {
 
     private boolean canReadOrWrite(Class<?> clazz, @Nullable MediaType mediaType) {
         return clazz == GPX.class &&
-                getSupportedMediaTypes().contains(mediaType);
+                (mediaType == null || getSupportedMediaTypes().contains(mediaType));
     }
 }

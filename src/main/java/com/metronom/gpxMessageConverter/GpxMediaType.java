@@ -8,14 +8,10 @@ import java.util.stream.Collectors;
 
 public enum GpxMediaType {
     APPLICATION_GPX_XML("application/gpx+xml"),
-    APPLICATION_XML(MediaType.APPLICATION_XML),
-    None();
+    APPLICATION_XML(MediaType.APPLICATION_XML);
 
     private final MediaType _mediaType;
 
-    GpxMediaType() {
-        this._mediaType = null;
-    }
 
     GpxMediaType(MediaType mediaType) {
         this._mediaType = mediaType;
