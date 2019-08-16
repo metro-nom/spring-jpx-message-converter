@@ -24,7 +24,8 @@ public class GpxTestUtil {
     private GpxTestUtil() {}
 
     public static GPX sampleGpx() {
-        long firstTimestamp = LocalDateTime.of(2019, 8, 15, 10, 50, 0).toEpochSecond(ZoneOffset.UTC) * 1000;
+        long firstTimestamp = LocalDateTime.of(2019, 8, 15, 10, 50, 0)
+                .toEpochSecond(ZoneOffset.UTC) * 1000;
         long secondTimestamp = firstTimestamp + 1000;
 
         return GPX.builder()
