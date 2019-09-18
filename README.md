@@ -12,5 +12,16 @@ https://www.baeldung.com/spring-httpmessageconverter-rest.
 
 ## Installation
 
-The project is still in its setup. Unfortunately there is no release yet.
+Add the dependency to your pom.xml
 
+```xml
+<dependency>
+  <groupId>com.metronom</groupId>
+  <artifactId>spring-jpx-message-converter</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+or build.gradle
+```
+implementation 'com.metronom:spring-jpx-message-converter:1.0.0'
+```
